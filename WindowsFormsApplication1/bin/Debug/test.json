@@ -1,0 +1,33 @@
+[
+	{
+		"<comfort>k__BackingField":3,
+		"<make>k__BackingField":"",
+		"<price>k__BackingField":0,
+		"<reliability>k__BackingField":0,
+		"<volume>k__BackingField":0
+	},
+
+	{
+		"<comfort>k__BackingField":2,
+		"<make>k__BackingField":"Атлант",
+		"<price>k__BackingField":1000,
+		"<reliability>k__BackingField":5,
+		"<volume>k__BackingField":20
+	},
+
+	{
+		"<comfort>k__BackingField":1,
+		"<make>k__BackingField":"Атлант2",
+		"<price>k__BackingField":360,
+		"<reliability>k__BackingField":3,
+		"<volume>k__BackingField":1
+	},
+
+	{
+		"<comfort>k__BackingField":0,
+		"<make>k__BackingField":"Атлант3",
+		"<price>k__BackingField":720,
+		"<reliability>k__BackingField":1,
+		"<volume>k__BackingField":200
+	}
+]
