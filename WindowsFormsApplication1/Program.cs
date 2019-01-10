@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,5 +23,6 @@ namespace WindowsFormsApplication1
         public static List<int> filtredFridgesId;
         public static List<Fridge> fridges;
         public static string fileName = null;
+        public static MemoryStream ms;
     }
 }

@@ -31,12 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.unset = new System.Windows.Forms.CheckBox();
+            this.pass = new System.Windows.Forms.CheckBox();
+            this.good = new System.Windows.Forms.CheckBox();
+            this.perf = new System.Windows.Forms.CheckBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label13 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label12 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,12 +55,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.perf = new System.Windows.Forms.CheckBox();
-            this.good = new System.Windows.Forms.CheckBox();
-            this.pass = new System.Windows.Forms.CheckBox();
-            this.unset = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.Size = new System.Drawing.Size(450, 327);
@@ -109,6 +110,81 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фильтры";
+            // 
+            // unset
+            // 
+            this.unset.AutoSize = true;
+            this.unset.Checked = true;
+            this.unset.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.unset.Location = new System.Drawing.Point(89, 229);
+            this.unset.Name = "unset";
+            this.unset.Size = new System.Drawing.Size(107, 17);
+            this.unset.TabIndex = 10;
+            this.unset.Text = "Не установлено";
+            this.unset.UseVisualStyleBackColor = true;
+            this.unset.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
+            // 
+            // pass
+            // 
+            this.pass.AutoSize = true;
+            this.pass.Checked = true;
+            this.pass.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.pass.Location = new System.Drawing.Point(89, 206);
+            this.pass.Name = "pass";
+            this.pass.Size = new System.Drawing.Size(101, 17);
+            this.pass.TabIndex = 8;
+            this.pass.Text = "Удовлетворит.";
+            this.pass.UseVisualStyleBackColor = true;
+            this.pass.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
+            // 
+            // good
+            // 
+            this.good.AutoSize = true;
+            this.good.Checked = true;
+            this.good.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.good.Location = new System.Drawing.Point(9, 229);
+            this.good.Name = "good";
+            this.good.Size = new System.Drawing.Size(71, 17);
+            this.good.TabIndex = 9;
+            this.good.Text = "Хорошая";
+            this.good.UseVisualStyleBackColor = true;
+            this.good.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
+            // 
+            // perf
+            // 
+            this.perf.AutoSize = true;
+            this.perf.Checked = true;
+            this.perf.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.perf.Location = new System.Drawing.Point(9, 206);
+            this.perf.Name = "perf";
+            this.perf.Size = new System.Drawing.Size(74, 17);
+            this.perf.TabIndex = 7;
+            this.perf.Text = "Отличная";
+            this.perf.UseVisualStyleBackColor = true;
+            this.perf.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
+            // 
+            // textBox5
+            // 
+            this.textBox5.ContextMenuStrip = this.contextMenuStrip1;
+            this.textBox5.Location = new System.Drawing.Point(7, 33);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(177, 20);
+            this.textBox5.TabIndex = 0;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Марка";
             // 
             // button1
             // 
@@ -156,11 +232,6 @@
             this.textBox7.TabIndex = 6;
             this.textBox7.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // label12
             // 
@@ -275,76 +346,6 @@
             this.textBox1.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 13);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Марка";
-            // 
-            // textBox5
-            // 
-            this.textBox5.ContextMenuStrip = this.contextMenuStrip1;
-            this.textBox5.Location = new System.Drawing.Point(7, 33);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(177, 20);
-            this.textBox5.TabIndex = 0;
-            this.textBox5.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
-            // 
-            // perf
-            // 
-            this.perf.AutoSize = true;
-            this.perf.Checked = true;
-            this.perf.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.perf.Location = new System.Drawing.Point(9, 206);
-            this.perf.Name = "perf";
-            this.perf.Size = new System.Drawing.Size(74, 17);
-            this.perf.TabIndex = 7;
-            this.perf.Text = "Отличная";
-            this.perf.UseVisualStyleBackColor = true;
-            this.perf.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
-            // 
-            // good
-            // 
-            this.good.AutoSize = true;
-            this.good.Checked = true;
-            this.good.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.good.Location = new System.Drawing.Point(9, 229);
-            this.good.Name = "good";
-            this.good.Size = new System.Drawing.Size(71, 17);
-            this.good.TabIndex = 9;
-            this.good.Text = "Хорошая";
-            this.good.UseVisualStyleBackColor = true;
-            this.good.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
-            // 
-            // pass
-            // 
-            this.pass.AutoSize = true;
-            this.pass.Checked = true;
-            this.pass.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.pass.Location = new System.Drawing.Point(89, 206);
-            this.pass.Name = "pass";
-            this.pass.Size = new System.Drawing.Size(101, 17);
-            this.pass.TabIndex = 8;
-            this.pass.Text = "Удовлетворит.";
-            this.pass.UseVisualStyleBackColor = true;
-            this.pass.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
-            // 
-            // unset
-            // 
-            this.unset.AutoSize = true;
-            this.unset.Checked = true;
-            this.unset.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.unset.Location = new System.Drawing.Point(89, 229);
-            this.unset.Name = "unset";
-            this.unset.Size = new System.Drawing.Size(107, 17);
-            this.unset.TabIndex = 10;
-            this.unset.Text = "Не установлено";
-            this.unset.UseVisualStyleBackColor = true;
-            this.unset.CheckedChanged += new System.EventHandler(this.perf_CheckedChanged);
-            // 
             // FridgeFind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,6 +356,7 @@
             this.MaximizeBox = false;
             this.Name = "FridgeFind";
             this.Text = "Поиск холодильников";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FridgeFind_FormClosed);
             this.Load += new System.EventHandler(this.FridgeFind_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

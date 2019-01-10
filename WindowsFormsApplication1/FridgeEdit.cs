@@ -1,13 +1,8 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization.Json;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace WindowsFormsApplication1
 {
@@ -78,6 +73,13 @@ namespace WindowsFormsApplication1
         {
             comboBox1.SelectedIndex = comboBox1.FindStringExact("Не установлено");
             disableEditAndDeleteButton();
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Fridge>));
+            Program.ms.Position = 0;
+            List<Fridge> tmp = (List<Fridge>)serializer.ReadObject(Program.ms);
+            if (tmp.Count == 0)
+                button4.Enabled = false;
+            else
+                button4.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,11 +92,6 @@ namespace WindowsFormsApplication1
             if(Program.fridges != null)
                 Program.fridges.Add(new Fridge(name,price, volume, reliability, comf));
             ((Form1)MdiParent).updateTable();
-            //((Form1)MdiParent).updateFilteringResults();
-        }
-
-        private void FridgeAdd_FormClosing(object sender, FormClosedEventArgs e)
-        {
         }
 
         public void disableEditAndDeleteButton()
@@ -142,10 +139,40 @@ namespace WindowsFormsApplication1
             int id;
             if ((id = ((Form1)MdiParent).getFrigdeIdAtRow(row)) == -1)
                 return;
+           
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Fridge>));
+            Program.ms.Position = 0;
+            List<Fridge> tmp = (List<Fridge>)serializer.ReadObject(Program.ms);
+            Program.ms = new MemoryStream();
+            tmp.Add(Program.fridges[id]);
+            serializer.WriteObject(Program.ms, tmp);
+
+            button4.Enabled = true;
+
             Program.fridges.RemoveAt(id);
             ((Form1)MdiParent).updateTable();
             if (Program.filtredFridgesId.Count == 0)
                 ((Form1)MdiParent).dehighlightAllRows();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Fridge>));
+            Program.ms.Position = 0;
+            List<Fridge> tmp = (List<Fridge>)serializer.ReadObject(Program.ms);
+            if (tmp.Count == 0)
+                return;
+            Program.ms = new MemoryStream();
+            Fridge fr = tmp[0];
+            tmp.RemoveAt(0);
+            if (tmp.Count == 0)
+                button4.Enabled = false;
+            serializer.WriteObject(Program.ms, tmp);
+
+          
+            if (Program.fridges != null)
+                Program.fridges.Add(fr);
+            ((Form1)MdiParent).updateTable();
         }
     }
 }

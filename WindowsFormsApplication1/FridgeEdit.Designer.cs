@@ -56,6 +56,7 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -321,6 +322,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Location = new System.Drawing.Point(12, 306);
             this.groupBox3.Name = "groupBox3";
@@ -333,11 +335,21 @@
             // 
             this.button3.Location = new System.Drawing.Point(9, 20);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(275, 55);
+            this.button3.Size = new System.Drawing.Size(128, 55);
             this.button3.TabIndex = 0;
-            this.button3.Text = "Удалить столбец";
+            this.button3.Text = "Удалить строку";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(147, 20);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(137, 55);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "Восстановить удаленную строку";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // FridgeEdit
             // 
@@ -353,7 +365,6 @@
             this.MaximizeBox = false;
             this.Name = "FridgeEdit";
             this.Text = "Редактирование холодильников";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FridgeAdd_FormClosing);
             this.Load += new System.EventHandler(this.FridgeAdd_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -392,5 +403,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button button4;
     }
 }

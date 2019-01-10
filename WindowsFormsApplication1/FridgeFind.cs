@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
     public partial class FridgeFind : Form
     {
-        public bool showSorted = false;
-
         public FridgeFind()
         {
             InitializeComponent();
@@ -340,20 +333,23 @@ namespace WindowsFormsApplication1
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
+            textBox5.Text = "";
             textBox8.Text = "";
             textBox7.Text = "";
             perf.Checked = true;
             good.Checked = true;
             pass.Checked = true;
             unset.Checked = true;
-            Program.filtredFridgesId = new List<int>();
-            //for (int i = 0; i < Program.fridges.Count; i++)
-            //    Program.filtredFridgesId.Add(i);
         }
 
         private void perf_CheckedChanged(object sender, EventArgs e)
         {
             update();
+        }
+
+        private void FridgeFind_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ((Form1)MdiParent).disableButtons();
         }
     }
 }

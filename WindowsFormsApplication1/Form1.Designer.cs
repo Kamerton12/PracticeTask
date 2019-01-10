@@ -36,6 +36,7 @@
             this.сохранитьКакToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.добавлениеЗолодильникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поискХолодильникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчетВExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,8 @@
             this.открытьToolStripMenuItem1,
             this.новыйToolStripMenuItem,
             this.сохранитьToolStripMenuItem,
-            this.сохранитьКакToolStripMenuItem1});
+            this.сохранитьКакToolStripMenuItem1,
+            this.отчетВExcelToolStripMenuItem});
             this.файоToolStripMenuItem.Name = "файоToolStripMenuItem";
             this.файоToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файоToolStripMenuItem.Text = "Файл";
@@ -104,6 +106,13 @@
             this.поискХолодильникаToolStripMenuItem.Text = "Поиск холодильника";
             this.поискХолодильникаToolStripMenuItem.Click += new System.EventHandler(this.поискХолодильникаToolStripMenuItem_Click);
             // 
+            // отчетВExcelToolStripMenuItem
+            // 
+            this.отчетВExcelToolStripMenuItem.Name = "отчетВExcelToolStripMenuItem";
+            this.отчетВExcelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.отчетВExcelToolStripMenuItem.Text = "Отчет в Excel";
+            this.отчетВExcelToolStripMenuItem.Click += new System.EventHandler(this.отчетВExcelToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -134,6 +143,7 @@
         private System.Windows.Forms.ToolStripMenuItem новыйToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сохранитьКакToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem отчетВExcelToolStripMenuItem;
     }
 }
 

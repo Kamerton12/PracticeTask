@@ -21,3 +21,4 @@ C:\Users\User\Desktop\Practica new\WindowsFormsApplication1\obj\Debug\WindowsFor
 C:\Users\User\Desktop\Practica new\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\User\Desktop\Practica new\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 C:\Users\User\Desktop\Practica new\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.FridgeEdit.resources
+C:\Users\User\Desktop\Practica new\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.ResolveComReference.cache

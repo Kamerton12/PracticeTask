@@ -1,15 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Runtime.Serialization;
+using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WindowsFormsApplication1
 {
@@ -49,7 +44,6 @@ namespace WindowsFormsApplication1
                 edit.Location = new Point(0, 0);
                 find.Location = new Point(edit.Width, 0);
                 find.Width = Width - edit.Width - 20;
-                //Width = edit.Width + find.Width + 20;
                 find.Height = Height - 67;
             }
         }
@@ -57,6 +51,9 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+            Program.ms = new MemoryStream();
+            DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<Fridge>));
+            serializer.WriteObject(Program.ms, new List<Fridge>());
         }
 
         private void добавлениеХолодильникаToolStripMenuItem_Click(object sender, EventArgs e)
@@ -192,8 +189,6 @@ namespace WindowsFormsApplication1
                             int row;
                             if (((row = ((FridgeFind)fo).getRow()) < 0) || (row > Program.fridges.Count - 1))
                                 return;
-
-                            //((FridgeEdit)f).update(Program.fridges[row]);
                             ((FridgeEdit)f).update(row);
                             break;
                         }
@@ -318,15 +313,54 @@ namespace WindowsFormsApplication1
             relocateWindows();
         }
 
-        //string name = "test.json";
-        //List<Fridge> frid = new List<Fridge>();
-        //frid.Add(new Fridge());
-        //frid.Add(new Fridge("Атлант", 1000, 20, 5, Fridge.Comfort.Passably));
-        //frid.Add(new Fridge("Атлант2", 360, 1, 3, Fridge.Comfort.Good));
-        //frid.Add(new Fridge("Атлант3", 720, 200, 1, Fridge.Comfort.Perfect));
-        //DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(List<Fridge>));
-        //FileStream fs = new FileStream(name, FileMode.Create);
-        //json.WriteObject(fs, frid);
-        //fs.Close();
+        private void отчетВExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel files(*.xlsx)|*.xlsx";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                Excel.Application exApp = new Excel.Application();
+
+                Excel.Workbook wb;
+                Excel.Worksheet ws;
+
+                wb = exApp.Workbooks.Add();
+                ws = (Excel.Worksheet)wb.Worksheets[1];
+                ws.Cells[1, 1] = "Марка";
+                ws.Cells[1, 2] = "Цена";
+                ws.Cells[1, 3] = "Объем";
+                ws.Cells[1, 4] = "Надежность";
+                ws.Cells[1, 5] = "Комфортность";
+
+                for (int i = 0; i < Program.filtredFridgesId.Count; i++)
+                {
+                    ws.Cells[i + 2, 1] = Program.fridges[Program.filtredFridgesId[i]].make;
+                    ws.Cells[i + 2, 2] = Program.fridges[Program.filtredFridgesId[i]].price;
+                    ws.Cells[i + 2, 3] = Program.fridges[Program.filtredFridgesId[i]].volume;
+                    ws.Cells[i + 2, 4] = Program.fridges[Program.filtredFridgesId[i]].reliability;
+                    String s = "Не установлено";
+                    switch (Program.fridges[Program.filtredFridgesId[i]].comfort)
+                    {
+                        case Fridge.Comfort.Perfect:
+                            s = "Отличная";
+                            break;
+                        case Fridge.Comfort.Good:
+                            s = "Хорошая";
+                            break;
+                        case Fridge.Comfort.Passably:
+                            s = "Удовлетворительная";
+                            break;
+                        case Fridge.Comfort.Unset:
+                            s = "Не установлено";
+                            break;
+                    }
+                    ws.Cells[i + 2, 5] = s;
+                }
+
+                ws.Columns.EntireColumn.AutoFit();
+                ws.SaveAs(sfd.FileName);
+                exApp.Quit();  
+            }
+        }
     }
 }
